@@ -488,31 +488,6 @@ function modal_tplfile(el,a){
               </div>
               <div class="clearfloat mb10"></div>
             </div>
-            
-            <div id="MyUpYun">
-              <h3 class="title">又拍云存储</h3>
-              <span class="help-inline">申请地址:<a href="https://console.upyun.com/login/" target="_blank">https://console.upyun.com/login/</a></span>
-              <div class="clearfloat"></div>
-              <div class="input-prepend"> <span class="add-on">域名</span>
-                <input type="text" name="config[FS][cloud][sdk][MyUpYun][domain]" class="span4" id="cloud_MyUpYun_domain" value="<?php echo $config['FS']['cloud']['sdk']['MyUpYun']['domain'] ; ?>"/>
-              </div>
-              <span class="help-inline">云存储访问域名</span>
-              <div class="clearfloat mb10"></div>
-              <div class="input-prepend"> <span class="add-on">Bucket</span>
-                <input type="text" name="config[FS][cloud][sdk][MyUpYun][Bucket]" class="span4" id="cloud_MyUpYun_Bucket" value="<?php echo $config['FS']['cloud']['sdk']['MyUpYun']['Bucket'] ; ?>"/>
-              </div>
-              <span class="help-inline">账号名称</span>
-              <div class="clearfloat mb10"></div>
-              <div class="input-prepend"> <span class="add-on">Username</span>
-                <input type="text" name="config[FS][cloud][sdk][MyUpYun][AccessKey]" class="span4" id="cloud_MyUpYun_AccessKey" value="<?php echo $config['FS']['cloud']['sdk']['MyUpYun']['AccessKey'] ; ?>"/>
-              </div>
-              <div class="clearfloat mb10"></div>
-              <div class="input-prepend"> <span class="add-on">Password</span>
-                <input type="text" name="config[FS][cloud][sdk][MyUpYun][SecretKey]" class="span4" id="cloud_MyUpYun_SecretKey" value="<?php echo $config['FS']['cloud']['sdk']['MyUpYun']['SecretKey'] ; ?>"/>
-              </div>
-              <div class="clearfloat mb10"></div>
-            </div>
-            
           </div>
           <div id="config-thumb" class="tab-pane hide">
 <!--             <div class="input-prepend"> <span class="add-on">缩略图</span>
