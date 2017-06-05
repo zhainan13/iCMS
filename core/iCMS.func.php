@@ -262,3 +262,8 @@ function get_php_content($content){
     $content = str_replace("<?php defined('iPHP') OR exit('What are you doing?');?>\n", '', $content);
     return $content;
 }
+function mipbody($str)
+{
+	$str=preg_replace(array("/<p>(\r\n|\s+)*<br\/>(\r\n|\s+)*<\/p>/","/<\s*img\s+[^>]*?src\s*=\s*(\'|\")(.*?)\\1[^>]*?\/?\s*>/im","/\s+style=.[^>]*/","/<p\><br\/\><\/p\>/","/<img>/"),array('','<mip-img popup data-carousel="carousel" class="mip-element mip-img" src="$2"></mip-img>','','',''),$str);
+	return $str;
+}
