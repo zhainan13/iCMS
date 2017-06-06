@@ -60,7 +60,7 @@ class iDevice {
 
         iPHP_DOMAIN == iPHP_ROUTER_URL OR self::router($config['router']);
         iPHP_DOMAIN == iPHP_ROUTER_URL OR self::router($config['FS']);
-        self::$config['router']['redirect'] && self::redirect();
+        self::redirect();
     }
     public static function router(&$router,$deep=false) {
         $router = is_array($router) && $deep ?
