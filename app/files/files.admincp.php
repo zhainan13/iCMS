@@ -414,6 +414,7 @@ class filesAdmincp{
         $array   = files::preg_img($content,$match);
         $uri     = parse_url(iCMS_FS_URL);
         $fArray  = array();
+        $img_array = array();
         foreach ($array as $key => $value) {
             $value = trim($value);
             if (stripos($value,$uri['host']) === false){
@@ -441,13 +442,15 @@ class filesAdmincp{
                     $fArray[$key] = '';
                 }
             }
-            if($remote==="autopic" && $key==0){
-                return $value;
-            }
+             $img_array[] = $value;
         }
         if($remote==="autopic" && empty($array)){
             return;
         }
+        if($remote==="autopic"){
+        	return $img_array;
+        }
+        
         if($array && $fArray){
             krsort($array);
             krsort($fArray);

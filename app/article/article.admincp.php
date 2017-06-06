@@ -832,26 +832,45 @@ class articleAdmincp{
             return $description;
         }
     }
-    public function set_pic($picurl,$aid,$key='b'){
-        $uri = parse_url(iCMS_FS_URL);
-        if (stripos($picurl,$uri['host']) !== false){
-            $pic = iFS::fp($picurl,'-http');
-            list($width, $height, $type, $attr) = @getimagesize(iFS::fp($pic,'+iPATH'));
-
-            $picdata  = article::value('picdata',$aid);
-            $picArray = filesApp::get_picdata($picdata);
-            $picdata  = filesAdmincp::picdata($picArray,array($key=>array('w'=>$width,'h'=>$height)));
-
-            $field = 'pic';
-            if($key=='b'){
-                $haspic = 1;
-            }else{
-                $field = $key.'pic';
-            }
-
-            article::update(compact('haspic',$field,'picdata'),array('id'=>$aid));
-            files::set_map(self::$appid,$aid,$pic,'path');
-        }
+	public function set_pic($picurl,$aid,$key='b'){
+    	$uri = parse_url(iCMS_FS_URL);
+    	$pics = array();
+    	if (is_array($picurl))
+    	{
+    		$pics = $picurl;
+    		$picurl = $picurl[0];
+    	}
+    
+    	if (stripos($picurl,$uri['host']) !== false){
+    		$pic = iFS::fp($picurl,'-http');
+    		list($width, $height, $type, $attr) = @getimagesize(iFS::fp($pic,'+iPATH'));
+    
+    		$picdata  = article::value('picdata',$aid);
+    		$picArray = filesApp::get_picdata($picdata);
+    		$picdata  = filesAdmincp::picdata($picArray,array($key=>array('w'=>$width,'h'=>$height)));
+    
+    		$field = 'pic';
+    		if($key=='b'){
+    			$haspic = 1;
+    		}else{
+    			$field = $key.'pic';
+    		}
+    
+    		article::update(compact('haspic',$field,'picdata'),array('id'=>$aid));
+    		files::set_map(self::$appid,$aid,$pic,'path');
+    	}
+    	 
+    	if (count($pics)>=3)
+    	{
+    		$mpic = $pics[1];
+    		$mpic = iFS::fp($mpic,'-http');
+    		$spic = $pics[2];
+    		$spic = iFS::fp($spic,'-http');
+    
+    		article::update(compact('mpic','spic','picdata'),array('id'=>$aid));
+    		files::set_map(self::$appid,$aid,$mpic,'path');
+    		files::set_map(self::$appid,$aid,$spic,'path');
+    	}
     }
 
     public function check_pic($body,$aid=0){
