@@ -1,5 +1,6 @@
 <?php
-if(!defined('iPHP')){
+if(!defined('iPHP'))
+{
 	require (dirname(__file__).'/iCMS.php');
 	echo patch_db_2017042401();
 }
